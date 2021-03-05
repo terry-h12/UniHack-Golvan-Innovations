@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databases</title>
+
+    <link rel = "stylesheet" href = "styles/main.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+    <!-- add modal that pops up when you press info -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="entityModalLable" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-2">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="info-name">
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Primary Key:</label>
+                            <textarea class="form-control" id="info-key"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Attribute(s): (example1, example2, example3)</label>
+                            <textarea class="form-control" id="info-attribute"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Attribute type(s): (example1 type, example2 type, example3 type)</label>
+                            <textarea class="form-control" id="info-attribute-types"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Subtype(s):</label>
+                            <textarea class="form-control" id="info-subtypes"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Cannot exist without:</label>
+                            <textarea class="form-control" id="info-cannot-exist-without"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </div>
+        </div>
+    </div>
+        `
+
+    
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">View Database</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Create Database</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <button class="btn btn-outline-success" type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+	</nav>
+
+	<!-- Modal -->
+	<div class="modal fade" id="entityModal" tabindex="-1" aria-labelledby="entityModalLable" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-2">
+						  <label for="recipient-name" class="col-form-label">Name:</label>
+						  <input type="text" class="form-control" id="entity-name">
+						</div>
+						<div class="mb-2">
+						  <label for="message-text" class="col-form-label">Primary Key:</label>
+						  <textarea class="form-control" id="primary-key"></textarea>
+						</div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Attribute(s): (example1, example2, example3)</label>
+                            <textarea class="form-control" id="attribute"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Attribute type(s): (example1 type, example2 type, example3 type)</label>
+                            <textarea class="form-control" id="attribute-types"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Subtype(s):</label>
+                            <textarea class="form-control" id="subtypes"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="message-text" class="col-form-label">Cannot exist without:</label>
+                            <textarea class="form-control" id="cannot-exist-without"></textarea>
+                        </div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id = "save" onClick = "saveAdd()">Save changes</button>
+				</div>
+		</div>
+		</div>
+	</div>
+
+    <div class = "tables">
+        <!-- entity table -->
+        <div class = "entity-table">
+			<div class="table-header">
+				<h1>Entities</h1>
+				<button id="entityButton" type="button" class="btn btn-secondary entityButton" data-bs-toggle="modal" data-bs-target="#entityModal">
+					<img src="assets/plus.svg">
+				</button>
+			</div>
+            <table class="table" id = "entTable">
+                <thead>
+					<tr>
+						<th scope="col">e1:(pk, attributes, ...)</th>
+						<th scope = "col">
+						</th>
+					</tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Entity 1</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-secondary" onClick="info()">
+                            <img src="assets/info-circle.svg">
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id = "0">
+                            <img src="assets/trash.svg">
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <!-- relationship table -->
+        <div class = "relationship-table">
+			<div class="table-header">
+				<h1>Relationships</h1>
+				<button id="relationshipButton" type="button" class="btn btn-secondary entityButton" data-bs-toggle="modal" data-bs-target="#entityModal">
+					<img src="assets/plus.svg">
+				</button>
+			</div>
+        </div>
+    </div>
+
+	<div class="footer">
+		<button type="button" class="btn btn-primary btn-lg" id="confirm">Create Database</button>
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src = "scripts/cilent.js"></script>
+    <script src = "scripts/main.js"></script>
+</body>
+</html>
