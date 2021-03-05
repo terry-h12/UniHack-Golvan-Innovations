@@ -22,6 +22,7 @@ myModal.addEventListener('shown.bs.modal', function () {
     document.getElementById('entity-name').value = '';
     document.getElementById('primary-key').value = '';
     document.getElementById('attribute').value = '';
+    document.getElementById('attribute-types').value = '';
     document.getElementById('subtypes').value = '';
     document.getElementById('cannot-exist-without').value = '';
 });
@@ -78,7 +79,9 @@ function saveAdd() {
 
     }
 
-
+    let myModalEl = document.getElementById('entityModal');
+    let modal = bootstrap.Modal.getInstance(myModalEl);
+    modal.hide();
 }
 
 function createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without) {
