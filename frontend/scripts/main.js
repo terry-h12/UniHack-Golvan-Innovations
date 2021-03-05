@@ -78,3 +78,5 @@ function createEntity(name, pk, attributes, attribute_types, subtypes, cannot_ex
 }
 
 let save_button = document.getElementsByClassName('save');
+
+

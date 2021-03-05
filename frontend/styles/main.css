@@ -73,3 +73,21 @@
     display: flex;
     justify-content: center;
 }
+
+#first-entity-attribute {
+    margin-top:5px;
+}
+
+#second-entity-attribute {
+    margin-top:5px;
+    margin-left:16.7%;
+}
+
+#attribute-data-type-right {
+    margin-top:5px;
+    margin-left:33%;
+}
+
+#attribute-data-type-left {
+    margin-top:5px;
+}

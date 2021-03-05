@@ -138,6 +138,48 @@
 		</div>
 	</div>
 
+    <div class="modal" id="relationshipModal"tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" placeholder = "first entity">
+                <select name="relationship_dropdown">
+                    <option value="">1 to 1</option>
+                    <option value="">1 to M</option>
+                    <option value="">M to N</option>
+                </select>
+              <input type="text" placeholder = "second entity">
+              <input type="text" placeholder = "first entity attribute" id = "first-entity-attribute">
+              <input type="text" placeholder = "second entity attribute" id = "second-entity-attribute">
+              <select name="attribute-data-type" id = "attribute-data-type-left">
+                <option value="">Integer</option>
+                <option value="">Text</option>
+                <option value="">VarChar(5)</option>
+                <option value="">VarChar(10)</option>
+                <option value="">VarChar(15)</option>
+                <option value="">VarChar(20)</option> 
+            </select>
+            <select name="attribute-data-type" id = "attribute-data-type-right">
+                <option value="">Integer</option>
+                <option value="">Text</option>
+                <option value="">VarChar(5)</option>
+                <option value="">VarChar(10)</option>
+                <option value="">VarChar(15)</option>
+                <option value="">VarChar(20)</option>
+            </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <div class = "tables">
         <!-- entity table -->
         <div class = "entity-table">
@@ -175,10 +217,32 @@
         <div class = "relationship-table">
 			<div class="table-header">
 				<h1>Relationships</h1>
-				<button id="relationshipButton" type="button" class="btn btn-secondary entityButton" data-bs-toggle="modal" data-bs-target="#entityModal">
+				<button id="relationshipButton" type="button" class="btn btn-secondary relationshipButton" data-bs-toggle="modal" data-bs-target="#relationshipModal">
 					<img src="assets/plus.svg">
 				</button>
 			</div>
+            <table class="table" id = "entTable">
+                <thead>
+					<tr>
+						<th scope="col">e1 --- Relationship --- e2</th>
+						<th scope = "col">
+						</th>
+					</tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Relationship 1</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-secondary" onClick="info()">
+                            <img src="assets/info-circle.svg">
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id = "0">
+                            <img src="assets/trash.svg">
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
 
