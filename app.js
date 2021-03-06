@@ -12,7 +12,7 @@ app.post('/createTable', (req,res)=>{
     console.log(req.body.name)
     console.log(req.body.primary_key)
     console.log(req.body.attributes)
-    console.log(req.body.attribute_types)
+    console.log(req.body.attributes_types)
     //console.log(req.body.subtypes)
     console.log(req.body.supertype)
     console.log(req.body.supertype_pk)
