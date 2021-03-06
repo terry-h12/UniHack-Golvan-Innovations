@@ -1,15 +1,86 @@
 
-// class to store entity
+// //original entity from main
+// // class to store entity
+// class entity {
+//     constructor(name, primary_key, attributes, attribute_types, subtypes, cannot_exist_without) {
+//         this.name = name;
+//         this.primary_key = primary_key;
+//         this.attributes = attributes;
+//         this.attribute_types = attribute_types
+//         this.subtypes = subtypes;
+//         this.cannot_exist_without = cannot_exist_without;
+//     }
+// };
+
+// // data structure to store entity classes
+// var entity_data = new Map();
+
+// function createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without) {
+//     var newEntity = new entity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
+//     entity_data.set(name, newEntity);
+//     return newEntity;
+// }
+
+//entity from my working branch
 class entity {
-    constructor(name, primary_key, attributes, attribute_types, subtypes, cannot_exist_without) {
+    constructor(name, primary_key, attributes, attribute_types, supertype, supertype_pk, cannot_exist_without, cannot_exist_without_fk) {
         this.name = name;
         this.primary_key = primary_key;
         this.attributes = attributes;
-        this.attribute_types = attribute_types
-        this.subtypes = subtypes;
+        this.attribute_types = attribute_types;
+        this.supertype = supertype;
+        this.supertype_pk = supertype_pk;
         this.cannot_exist_without = cannot_exist_without;
+        this.cannot_exist_without_fk = cannot_exist_without_fk;
     }
 };
+
+var entity_data = new Map();
+
+function createEntity(name, pk, attributes, attribute_types, supertype, cannot_exist_without) {
+    // if (subtypes != "") {
+    //     if (supertype == "") {
+    //         supertype = pk;
+    //     } 
+    // }
+
+    let supertype_pk = "";
+    console.log(supertype);
+    if (supertype != "") {
+        console.log(entity_data);
+        supertype_pk = entity_data.get(supertype).primary_key;
+    } else {
+        supertype = "";
+        supertype_pk = "";
+    }
+    
+    let cannot_exist_without_fk = "";
+    console.log(cannot_exist_without);
+    if (cannot_exist_without != "") {
+        console.log(entity_data);
+        //cannot_exist_without_fk = entity_data.get(cannot_exist_without).name;
+        cannot_exist_without_fk = entity_data.get(cannot_exist_without).primary_key;
+    } else {
+        cannot_exist_without = "";
+        cannot_exist_without_fk = "";
+    }
+    
+    var newEntity = new entity(name, pk, attributes, attribute_types, supertype, supertype_pk, cannot_exist_without, cannot_exist_without_fk);
+    console.log(name);
+    console.log(pk);
+    console.log(attributes);
+    console.log(attribute_types);
+    console.log(supertype);
+    console.log(supertype_pk);
+    console.log(cannot_exist_without);
+    console.log(cannot_exist_without_fk);
+    entity_data.set(name, newEntity);
+    return newEntity;
+}
+
+
+
+
 
 class relationship {
     constructor(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
@@ -25,8 +96,7 @@ class relationship {
 
 var relationship_data = [];
 
-// data structure to store entity classes
-var entity_data = new Map();
+
 
 // clearing modals when info is entered
 var entityModal = document.getElementById('entityModal');
@@ -58,10 +128,11 @@ function saveAdd() {
     let pk = document.getElementById('primary-key').value;
     let attributes = document.getElementById('attribute').value;
     let attribute_types = document.getElementById('attribute-types').value;
-    let subtypes = document.getElementById('subtypes').value;
+    //let subtypes = document.getElementById('subtypes').value;
+    let supertype = document.getElementById('subtypes').value;
     let cannot_exist_without = document.getElementById('cannot-exist-without').value;
   
-    var new_ent = createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
+    var new_ent = createEntity(name, pk, attributes, attribute_types, supertype, cannot_exist_without);
     // console.log(new_ent.name);
     // passentity();
 
@@ -99,7 +170,7 @@ function saveAdd() {
         document.getElementById('ent-info-key').value = new_ent.primary_key;
         document.getElementById('ent-info-attribute').value = new_ent.attributes;
         document.getElementById('ent-info-attribute-types').value = new_ent.attribute_types;
-        document.getElementById('ent-info-subtypes').value = new_ent.subtypes;
+        document.getElementById('ent-info-subtypes').value = new_ent.supertype;
         document.getElementById('ent-info-cannot-exist-without').value = new_ent.cannot_exist_without;
 
     }
@@ -109,11 +180,7 @@ function saveAdd() {
     modal.hide();
 }
 
-function createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without) {
-    var newEntity = new entity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
-    entity_data.set(name, newEntity);
-    return newEntity;
-}
+
 
 let save_button = document.getElementsByClassName('save');
 
