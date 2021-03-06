@@ -1,0 +1,112 @@
+.tables {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    font-size: 1rem;
+}
+
+.entity-table {
+    border-style: solid;
+    border-width: 2px;
+    width: 35%;
+    margin-right: 10px;
+}
+
+.relationship-table{
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    width: 35%;
+    margin-left: 10px;
+}
+
+.table-title {
+    font-size: 40pt;
+}
+
+.entity-add {
+    border-style: none;
+    background-color: transparent;
+}
+
+.entity-add :hover {
+    background-color: grey;
+}
+
+.btn.btn-outline-secondary {
+    border-style:none;
+}
+
+#entityButton {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 24px;
+    width: 24px;
+    right: 10px;
+}
+
+#relationshipButton {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 24px;
+    width: 24px;
+    right: 10px;
+}
+
+.footer {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/* #first-entity-attribute {
+    margin-top:5px;
+}
+
+#second-entity-attribute {
+    margin-top:5px;
+    margin-left:16.7%;
+}
+
+#attribute-data-type-right {
+    margin-top:5px;
+    margin-left:33%;
+}
+
+#attribute-data-type-left {
+    margin-top:5px;
+} */
+
+
+.rel-first-entity-attribute {
+    margin-top:1.5%;
+}
+
+.rel-second-entity-attribute {
+    margin-top:1.5%;
+    margin-left:16.8%;
+}
+
+.rel-attribute-data-type-right {
+    margin-top:1.5%;
+    margin-left:34%;
+}
+
+.rel-attribute-data-type-left {
+    margin-top:1.5%;
+}
