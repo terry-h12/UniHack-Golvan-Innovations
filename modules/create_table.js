@@ -52,10 +52,11 @@ function my_create_table(table_name, pk, attributes, datatypes, supertype, super
     return res; 
 }
 
-exports.createTable = function (name, pk, at,a_types, sub, sup, cant, cant_fk) {
-    con.query(my_create_table(name, pk, at,a_types, sub, sup, cant, cant_fk), function (err, result) {
+exports.createTable = function (name, pk, at,a_types, sup, sup_pk, cant, cant_fk) {
+    con.query(my_create_table(name, pk, at,a_types, sup, sup_pk, cant, cant_fk), function (err, result) {
         if (err) throw err;
         console.log("Table created");
+        console.log(my_create_table(name, pk, at,a_types, sup, sup_pk, cant, cant_fk));
     });
     return;
 }

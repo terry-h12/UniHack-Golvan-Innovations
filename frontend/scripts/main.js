@@ -19,7 +19,7 @@ function saveAdd() {
     let cannot_exist_without = document.getElementById('cannot-exist-without').value;
     console.log(cannot_exist_without)
   
-    createEntity(name, pk, attributes, attribute_types, subtypes, "", cannot_exist_without);
+    createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
 
     // passentity();
 
