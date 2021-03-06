@@ -74,7 +74,7 @@
     justify-content: center;
 }
 
-#first-entity-attribute {
+/* #first-entity-attribute {
     margin-top:5px;
 }
 
@@ -90,4 +90,23 @@
 
 #attribute-data-type-left {
     margin-top:5px;
+} */
+
+
+.rel-first-entity-attribute {
+    margin-top:1.5%;
+}
+
+.rel-second-entity-attribute {
+    margin-top:1.5%;
+    margin-left:16.8%;
+}
+
+.rel-attribute-data-type-right {
+    margin-top:1.5%;
+    margin-left:34%;
+}
+
+.rel-attribute-data-type-left {
+    margin-top:1.5%;
 }

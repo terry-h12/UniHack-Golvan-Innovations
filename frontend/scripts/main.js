@@ -28,17 +28,28 @@ var relationship_data = [];
 // data structure to store entity classes
 var entity_data = new Map();
 
-var myModal = document.getElementById('entityModal');
-// var myInput = document.getElementById('myInput');
+// clearing modals when info is entered
+var entityModal = document.getElementById('entityModal');
 
-myModal.addEventListener('shown.bs.modal', function () {
-    // myInput.focus();
+entityModal.addEventListener('shown.bs.modal', function () {
     document.getElementById('entity-name').value = '';
     document.getElementById('primary-key').value = '';
     document.getElementById('attribute').value = '';
     document.getElementById('attribute-types').value = '';
     document.getElementById('subtypes').value = '';
     document.getElementById('cannot-exist-without').value = '';
+});
+
+var relationshipModal = document.getElementById('relationshipModal');
+
+relationshipModal.addEventListener('shown.bs.modal', function () {
+    document.getElementById('first-entity').value = '';
+    document.getElementById('second-entity').value = '';
+    document.getElementById('relationship_dropdown').selectedIndex = 0;
+    document.getElementById('first-entity-attribute').value = '';
+    document.getElementById('second-entity-attribute').value = '';
+    document.getElementById('attribute-data-type-left').selectedIndex = 0;
+    document.getElementById('attribute-data-type-right').selectedIndex = 0;
 });
 
 // save button to add entity to map and visually update table
@@ -60,7 +71,7 @@ function saveAdd() {
                         <tr>
                             <td>${name}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-secondary" onClick="info()" id = ${name + 'Info'} data-bs-toggle="modal" data-bs-target="#entityInfoModal">
+                                <button type="button" class="btn btn-outline-secondary" id = ${name + 'Info'} data-bs-toggle="modal" data-bs-target="#entityInfoModal">
                                     <img src="assets/info-circle.svg">
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary" id = ${name + 'Remove'}>
@@ -116,9 +127,9 @@ function relationshipSave() {
     let second_entity_data_type = document.getElementById('attribute-data-type-right').value;
     
 
-    var new_relationship = createRelationship(first_entity_name, second_entity_name, relationship_type, first_entity_attribute, second_entity_attribute, first_entity_data_type, second_entity_data_type);
-    relationship_data.push(new_relationship);
-    console.log(relationship_data);
+    var new_relationship = createRelationship(first_entity_name, second_entity_name, relationship_type, first_entity_data_type, second_entity_data_type, first_entity_attribute, second_entity_attribute, first_entity_data_type, second_entity_data_type);
+    
+    // console.log(relationship_data);
     let myModalEl = document.getElementById('relationshipModal');
     let modal = bootstrap.Modal.getInstance(myModalEl);
     modal.hide();
@@ -127,10 +138,10 @@ function relationshipSave() {
                         <tr>
                             <td>${first_entity_name + " "+ relationship_type +  " "+second_entity_name}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-secondary" onClick="info()" id = ${first_entity_name +  second_entity_name + first_entity_attribute+ second_entity_attribute+'Info'} data-bs-toggle="modal" data-bs-target="#relationshipInfoModal">
+                                <button type="button" class="btn btn-outline-secondary" id = ${first_entity_name +  second_entity_name + first_entity_attribute + second_entity_attribute+'Info'} data-bs-toggle="modal" data-bs-target="#relationshipInfoModal">
                                     <img src="assets/info-circle.svg">
                                 </button>
-                                <button type="button" class="btn btn-outline-secondary" id = ${first_entity_name +  second_entity_name + first_entity_attribute+ second_entity_attribute + 'Remove'}>
+                                <button type="button" class="btn btn-outline-secondary" id = ${first_entity_name +  second_entity_name + first_entity_attribute + second_entity_attribute + 'Remove'}>
                                     <img src="assets/trash.svg">
                                 </button>
                             </td>
@@ -139,19 +150,21 @@ function relationshipSave() {
     let new_row = table_ref.insertRow(table_ref.rows.length);
     new_row.innerHTML = my_html_content;
     const info = document.getElementById(`${first_entity_name +  second_entity_name + first_entity_attribute+ second_entity_attribute+'Info'}`);
+    
+    console.log(new_relationship);
     info.onclick = () => {
-        document.getElementById('rel-first-entity').value = new_relationship.first_entity_name;
-        document.getElementById('relationship_dropdown').value = new_relationship.relationship_type;
-        document.getElementById('rel-second-entity').value = new_relationship.second_entity_name;
-        document.getElementById('first-entity-attribute').value = new_relationship.first_entity_attribute;
-        document.getElementById('first-entity-attribute').value = new_relationship.second_entity_attribute;
-        document.getElementById('attribute-data-type-left').value = new_relationship.first_entity_data_type;
-        document.getElementById('attribute-data-type-right').value = new_relationship.second_entity_data_type;
+        document.getElementById('info-rel-first-entity').value = new_relationship.where_from;
+        document.getElementById('info-rel-second-entity').value = new_relationship.where_to;
+        document.getElementById('info-relationship_dropdown').value = new_relationship.relationship_type;
+        document.getElementById('info-rel-first-entity-attribute').value = new_relationship.from_attribute;
+        document.getElementById('info-rel-second-entity-attribute').value = new_relationship.to_attribute;
+        document.getElementById('info-attribute-data-type-left').value = new_relationship.type_from;
+        document.getElementById('info-attribute-data-type-right').value = new_relationship.type_to;
     }
 }
 
 function createRelationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
     var newRelationship = new relationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute);
-    
+    relationship_data.push(newRelationship);
     return newRelationship;
 }

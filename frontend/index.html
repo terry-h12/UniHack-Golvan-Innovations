@@ -57,6 +57,7 @@
         </div>
     </div>
 
+    <!-- relationship info modal -->
     <div class="modal" id="relationshipInfoModal"tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -65,16 +66,16 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input type="text" placeholder = "first entity" id = "rel-first-entity">
-                <select name="relationship_dropdown" id = "relationship_dropdown">
+                <input type="text" placeholder = "first entity" id = "info-rel-first-entity">
+                <select name="relationship_dropdown" id = "info-relationship_dropdown">
                     <option value="1-to-1">1 to 1</option>
                     <option value="1-to-m">1 to M</option>
                     <option value="1-to-n">M to N</option>
                 </select>
-              <input type="text" placeholder = "second entity" id = "rel-second-entity">
-              <input type="text" placeholder = "first entity attribute" id = "first-entity-attribute">
-              <input type="text" placeholder = "second entity attribute" id = "second-entity-attribute">
-              <select name="attribute-data-type" id = "attribute-data-type-left">
+              <input type="text" placeholder = "second entity" id = "info-rel-second-entity">
+              <input type="text" placeholder = "first entity attribute" class = "rel-first-entity-attribute" id = "info-rel-first-entity-attribute">
+              <input type="text" placeholder = "second entity attribute" class = "rel-second-entity-attribute" id = "info-rel-second-entity-attribute">
+              <select name="attribute-data-type" class = "rel-attribute-data-type-left" id = "info-attribute-data-type-left">
                 <option value="integer">Integer</option>
                 <option value="text">Text</option>
                 <option value="varchar5">VarChar(5)</option>
@@ -82,7 +83,7 @@
                 <option value="varchar15">VarChar(15)</option>
                 <option value="varchar20">VarChar(20)</option> 
             </select>
-            <select name="attribute-data-type" id = "attribute-data-type-right">
+            <select name="attribute-data-type" class = "rel-attribute-data-type-right" id = "info-attribute-data-type-right">
                 <option value="integer">Integer</option>
                 <option value="text">Text</option>
                 <option value="varchar5">VarChar(5)</option>
@@ -92,9 +93,7 @@
             </select>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id = "relationship-save" onClick="relationshipSave()">Save changes</button>
-            </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>            </div>
           </div>
         </div>
       </div>
@@ -195,9 +194,9 @@
                     <option value="1-to-n">M to N</option>
                 </select>
               <input type="text" placeholder = "second entity" id = "second-entity">
-              <input type="text" placeholder = "first entity attribute" id = "first-entity-attribute">
-              <input type="text" placeholder = "second entity attribute" id = "second-entity-attribute">
-              <select name="attribute-data-type" id = "attribute-data-type-left">
+              <input type="text" placeholder = "first entity attribute" class = "rel-first-entity-attribute" id = "first-entity-attribute">
+              <input type="text" placeholder = "second entity attribute" class = "rel-second-entity-attribute" id = "second-entity-attribute">
+              <select name="attribute-data-type" class = "rel-attribute-data-type-left" id = "attribute-data-type-left">
                 <option value="integer">Integer</option>
                 <option value="text">Text</option>
                 <option value="varchar5">VarChar(5)</option>
@@ -205,7 +204,7 @@
                 <option value="varchar15">VarChar(15)</option>
                 <option value="varchar20">VarChar(20)</option> 
             </select>
-            <select name="attribute-data-type" id = "attribute-data-type-right">
+            <select name="attribute-data-type" class = "rel-attribute-data-type-right" id = "attribute-data-type-right">
                 <option value="integer">Integer</option>
                 <option value="text">Text</option>
                 <option value="varchar5">VarChar(5)</option>
