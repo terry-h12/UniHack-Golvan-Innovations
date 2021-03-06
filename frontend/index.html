@@ -146,27 +146,28 @@
 					<form>
 						<div class="mb-2">
 						  <label for="recipient-name" class="col-form-label">Name:</label>
-						  <input type="text" class="form-control" id="entity-name">
+						  <input type="text" class="form-control" id="entity-name" placeholder = "Name of the Entity">
 						</div>
 						<div class="mb-2">
 						  <label for="message-text" class="col-form-label">Primary Key:</label>
-						  <textarea class="form-control" id="primary-key"></textarea>
+						  <textarea class="form-control" id="primary-key" placeholder="The Unique Key that Identifies the Entity"></textarea>
 						</div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Attribute(s): (example1, example2, example3)</label>
-                            <textarea class="form-control" id="attribute"></textarea>
+                            <textarea class="form-control" id="attribute" placeholder ="The Attributes of the Entity e.g. Name, Age, Gender"></textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Attribute type(s): (example1 type, example2 type, example3 type)</label>
-                            <textarea class="form-control" id="attribute-types"></textarea>
+                            <textarea class="form-control" id="attribute-types" placeholder = "Integer - Number, VarChar(n) - Combination of Text and Numbers adding up to n"></textarea>
+                            
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Subtype(s):</label>
-                            <textarea class="form-control" id="subtypes"></textarea>
+                            <textarea class="form-control" id="subtypes" placeholder="Subgroups of this Entity e.g. Admin is a subtype of Employees"></textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Cannot exist without:</label>
-                            <textarea class="form-control" id="cannot-exist-without"></textarea>
+                            <textarea class="form-control" id="cannot-exist-without" placeholder="Existence is reliant on another Entity e.g. Room is reliant on a Building existing"></textarea>
                         </div>
 					</form>
 				</div>

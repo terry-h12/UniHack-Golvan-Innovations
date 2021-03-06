@@ -35,7 +35,7 @@ entityModal.addEventListener('shown.bs.modal', function () {
     document.getElementById('entity-name').value = '';
     document.getElementById('primary-key').value = '';
     document.getElementById('attribute').value = '';
-    document.getElementById('attribute-types').value = '';
+    document.getElementById('attribute-types').value ='';
     document.getElementById('subtypes').value = '';
     document.getElementById('cannot-exist-without').value = '';
 });
@@ -151,7 +151,15 @@ function relationshipSave() {
     new_row.innerHTML = my_html_content;
     const info = document.getElementById(`${first_entity_name +  second_entity_name + first_entity_attribute+ second_entity_attribute+'Info'}`);
     
-    console.log(new_relationship);
+    const trash = document.getElementById(`${first_entity_name +  second_entity_name + first_entity_attribute + second_entity_attribute + 'Remove'}`);
+    trash.onclick = () => {
+        const name = document.getElementById(`${first_entity_name +  second_entity_name + first_entity_attribute + second_entity_attribute}`);
+        var removeIndex = relationship_data.map(function(item) { return item.id; }).indexOf(name);
+        relationship_data.splice(removeIndex -1 , 1);
+        const row_child_child = document.getElementById(`${first_entity_name +  second_entity_name + first_entity_attribute+ second_entity_attribute+'Info'}`);
+        row_child_child.parentNode.parentNode.remove();
+        
+    }
     info.onclick = () => {
         document.getElementById('info-rel-first-entity').value = new_relationship.where_from;
         document.getElementById('info-rel-second-entity').value = new_relationship.where_to;
@@ -161,6 +169,7 @@ function relationshipSave() {
         document.getElementById('info-attribute-data-type-left').value = new_relationship.type_from;
         document.getElementById('info-attribute-data-type-right').value = new_relationship.type_to;
     }
+    console.log(relationship_data);
 }
 
 function createRelationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
