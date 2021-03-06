@@ -74,24 +74,9 @@
     justify-content: center;
 }
 
-/* #first-entity-attribute {
-    margin-top:5px;
+.relationship_dropdown {
+    margin-left: 0.15%;
 }
-
-#second-entity-attribute {
-    margin-top:5px;
-    margin-left:16.7%;
-}
-
-#attribute-data-type-right {
-    margin-top:5px;
-    margin-left:33%;
-}
-
-#attribute-data-type-left {
-    margin-top:5px;
-} */
-
 
 .rel-first-entity-attribute {
     margin-top:1.5%;
