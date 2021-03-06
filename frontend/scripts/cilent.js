@@ -102,3 +102,37 @@ function passTables(name, pk, att, attribute_types, supertype, supertype_pk, can
         console.log(response)
     });
 }
+
+
+function createAllRelationships() {
+    for (const [k_relo, v_relo] of relationship_data.entries()) {
+        passRelationships(v_relo.where_from, v_relo.where_to, v_relo.relationship_type, v_relo.type_from, v_relo.type_to, v_relo.from_attribute, v_relo.to_attribute);
+    }
+}
+
+function passRelationships(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
+    let data_relo = {
+        where_from: where_from,
+        where_to: where_to,
+        relationship_type: relationship_type,
+        type_from: type_from, 
+        type_to: type_to,
+        from_attribute: from_attribute,
+        to_attribute: to_attribute
+    }
+
+    console.log("YEEEETETETETETETE")
+    console.log("YEEEETETETETETETE")
+    console.log(JSON.stringify(data_relo))
+
+    const options2 = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data_relo)
+    };
+    fetch('/alterTable', options2).then(response => {
+        console.log(response)
+    });
+}
