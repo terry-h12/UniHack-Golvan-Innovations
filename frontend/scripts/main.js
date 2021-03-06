@@ -97,6 +97,12 @@ class relationship {
 
 var relationship_data = [];
 
+function createRelationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
+    var newRelationship = new relationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute);
+    relationship_data.push(newRelationship);
+    return newRelationship;
+}
+
 
 
 // clearing modals when info is entered
@@ -240,8 +246,11 @@ function relationshipSave() {
     console.log(relationship_data);
 }
 
-function createRelationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
-    var newRelationship = new relationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute);
-    relationship_data.push(newRelationship);
-    return newRelationship;
-}
+
+
+//original placement of createRelationship
+// function createRelationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute) {
+//     var newRelationship = new relationship(where_from, where_to, relationship_type, type_from, type_to, from_attribute, to_attribute);
+//     relationship_data.push(newRelationship);
+//     return newRelationship;
+// }

@@ -34,4 +34,21 @@ app.post('/createTable', (req,res)=>{
     });
 });
 
+app.post('/alterTable', (req, res) => {
+    const altDB = require("./modules/alter_table");
+    console.log("logging req.body");
+    console.log(req.body);
+    let table_from = req.body.where_from;
+    let table_to = req.body.where_to;
+    let relo_type = req.body.relationship_type
+    let att_from_type = req.body.type_from;
+    let att_to_type = req.body.type_to;
+    let att_from = req.body.from_attribute;
+    let att_to = req.body.to_attribute;
+    altDB.alterTable(table_from, table_to, relo_type, att_from_type, att_to_type, att_from, att_to);
+    res.json({
+        status: "success"
+    });
+});
+
 app.listen(8080);
