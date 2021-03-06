@@ -22,6 +22,7 @@
 // }
 
 //entity from my working branch
+
 class entity {
     constructor(name, primary_key, attributes, attribute_types, supertype, supertype_pk, cannot_exist_without, cannot_exist_without_fk) {
         this.name = name;
@@ -141,7 +142,7 @@ function saveAdd() {
                         `
                         <tr>
                             <td>${name}</td>
-                            <td>
+                            <td style="display: flex; justify-content: flex-end;">
                                 <button type="button" class="btn btn-outline-secondary" id = ${name + 'Info'} data-bs-toggle="modal" data-bs-target="#entityInfoModal">
                                     <img src="assets/info-circle.svg">
                                 </button>
@@ -203,8 +204,8 @@ function relationshipSave() {
     let my_html_content = 
                         `
                         <tr>
-                            <td>${first_entity_name + " "+ relationship_type +  " "+second_entity_name}</td>
-                            <td>
+                            <td>${first_entity_name + " <----- "+ relationship_type +  " -----> "+second_entity_name}</td>
+                            <td style="display: flex; justify-content: flex-end;">
                                 <button type="button" class="btn btn-outline-secondary" id = ${first_entity_name +  second_entity_name + first_entity_attribute + second_entity_attribute+'Info'} data-bs-toggle="modal" data-bs-target="#relationshipInfoModal">
                                     <img src="assets/info-circle.svg">
                                 </button>

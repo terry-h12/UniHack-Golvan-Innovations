@@ -14,12 +14,36 @@
 
 
 <body>
+      <!-- Modal -->
+    <div class="modal fade" id="entityInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <h2>Attributes</h2>
+              <div id="recipient-name">ajgnoanrg</div>
+              <label for="recipient-name" class="col-form-label">Supertypes:</label>
+              <div id="recipient-name">ajgnoanrg</div>
+              <label for="recipient-name" class="col-form-label">Can't exist withoutS:</label>
+              <div id="recipient-name">ajgnoanrg</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- add modal that pops up when you press info -->
     <div class="modal fade" id="entityInfoModal" tabindex="-1" aria-labelledby="entityModalLable" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create an Entity</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -62,7 +86,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title">Create a relationship</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -70,7 +94,7 @@
                 <select name="relationship_dropdown" class = "relationship_dropdown" id = "info-relationship_dropdown">
                     <option value="1-to-1">1 to 1</option>
                     <option value="1-to-m">1 to M</option>
-                    <option value="1-to-n">M to N</option>
+                    <option value="m-to-n">M to N</option>
                 </select>
               <input type="text" placeholder = "second entity" id = "info-rel-second-entity">
               <input type="text" placeholder = "first entity attribute" class = "rel-first-entity-attribute" id = "info-rel-first-entity-attribute">
@@ -103,34 +127,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Logo</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">View Database</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Create Database</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <button class="btn btn-outline-success" type="submit">Login</button>
-            </form>
-          </div>
+          <a class="navbar-brand" href="#">Gorlvan Datalux</a>
         </div>
 	</nav>
 
@@ -139,7 +136,7 @@
 		<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Create an Entity</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
@@ -162,8 +159,8 @@
                             
                         </div>
                         <div class="mb-2">
-                            <label for="message-text" class="col-form-label">Subtype(s):</label>
-                            <textarea class="form-control" id="subtypes" placeholder="Subgroups of this Entity e.g. Admin is a subtype of Employees"></textarea>
+                            <label for="message-text" class="col-form-label">Supertypes(s):</label>
+                            <textarea class="form-control" id="subtypes" placeholder="Supertypes of this Entity e.g. Employees is a supertype of Admin"></textarea>
                         </div>
                         <div class="mb-2">
                             <label for="message-text" class="col-form-label">Cannot exist without:</label>
@@ -192,7 +189,7 @@
                 <select name="relationship_dropdown" class = "relationship_dropdown" id = "relationship_dropdown">
                     <option value="1-to-1">1 to 1</option>
                     <option value="1-to-m">1 to M</option>
-                    <option value="1-to-n">M to N</option>
+                    <option value="m-to-n">M to N</option>
                 </select>
               <input type="text" placeholder = "second entity" id = "second-entity">
               <input type="text" placeholder = "first entity attribute" class = "rel-first-entity-attribute" id = "first-entity-attribute">
@@ -227,22 +224,22 @@
         <div class = "entity-table">
 			<div class="table-header">
 				<h1>Entities</h1>
-				<button id="entityButton" type="button" class="btn btn-secondary entityButton" data-bs-toggle="modal" data-bs-target="#entityModal">
+				<button id="entityButton" type="button" class="btn btn-outline-secondary entityButton" data-bs-toggle="modal" data-bs-target="#entityModal">
 					<img src="assets/plus.svg">
 				</button>
 			</div>
             <table class="table" id = "entTable">
                 <thead>
 					<tr>
-						<th scope="col">e1:(pk, attributes, ...)</th>
+						<th scope="col">Entities</th>
 						<th scope = "col">
 						</th>
 					</tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td>Entity 1</td>
-                    <td>
+                    <td style="display: flex; justify-content: flex-end;">
                         <button type="button" class="btn btn-outline-secondary" onClick="info()">
                             <img src="assets/info-circle.svg">
                         </button>
@@ -250,7 +247,7 @@
                             <img src="assets/trash.svg">
                         </button>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
         </div>
@@ -259,22 +256,22 @@
         <div class = "relationship-table">
 			<div class="table-header">
 				<h1>Relationships</h1>
-				<button id="relationshipButton" type="button" class="btn btn-secondary relationshipButton" data-bs-toggle="modal" data-bs-target="#relationshipModal">
+				<button id="relationshipButton" type="button" class="btn btn-outline-secondary relationshipButton" data-bs-toggle="modal" data-bs-target="#relationshipModal">
 					<img src="assets/plus.svg">
 				</button>
 			</div>
             <table class="table" id = "relTable">
                 <thead>
 					<tr>
-						<th scope="col">e1 --- Relationship --- e2</th>
+						<th scope="col">Relationship</th>
 						<th scope = "col">
 						</th>
 					</tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td>Relationship 1</td>
-                    <td>
+                    <td style="display: flex; justify-content: flex-end;">
                         <button type="button" class="btn btn-outline-secondary" onClick="info()">
                             <img src="assets/info-circle.svg">
                         </button>
@@ -282,15 +279,24 @@
                             <img src="assets/trash.svg">
                         </button>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
         </div>
     </div>
 
-	<div class="footer">
-		<button type="button" class="btn btn-primary btn-lg" id="confirm">Create Database</button>
-	</div>
+    <div class="footer">
+      <button type="button" class="btn btn-primary btn-lg" id="confirm">Create Database</button>
+    </div>
+
+  <div class="middle">
+    <div class="middleHeader">
+      <h4 id="mHeader">Diagram</h4>
+    </div>
+    <div class="diagram">
+
+    </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src = "scripts/main.js"></script>
 	<script src = "scripts/cilent.js"></script>
