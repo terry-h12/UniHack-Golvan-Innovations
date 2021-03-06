@@ -246,6 +246,12 @@ function relationshipSave() {
     console.log(relationship_data);
 }
 
+document.getElementById("confirm").addEventListener("click", function() {
+    createAllTables();
+    createAllRelationships();
+    //diagriam gets added here
+});
+
 
 
 //original placement of createRelationship
