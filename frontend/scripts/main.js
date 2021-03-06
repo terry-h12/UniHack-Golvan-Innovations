@@ -1,16 +1,3 @@
-class entity {
-    constructor(name, primary_key, attributes, attribute_types, subtypes, cannot_exist_without) {
-        this.name = name;
-        this.primary_key = primary_key;
-        this.attributes = attributes;
-        this.attribute_types = attribute_types
-        this.subtypes = subtypes;
-        this.cannot_exist_without = cannot_exist_without;
-    }
-};
-
-var entity_data = new Map();
-
 var myModal = document.getElementById('entityModal');
 // var myInput = document.getElementById('myInput');
 
@@ -30,6 +17,7 @@ function saveAdd() {
     let attribute_types = document.getElementById('attribute-types').value;
     let subtypes = document.getElementById('subtypes').value;
     let cannot_exist_without = document.getElementById('cannot-exist-without').value;
+    console.log(cannot_exist_without)
   
     createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
 
@@ -52,8 +40,6 @@ function saveAdd() {
     let table_ref = document.getElementById('entTable');
     let new_row = table_ref.insertRow(table_ref.rows.length);
     new_row.innerHTML = my_html_content;
-
-    createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
     
     const trash = document.getElementById(`${name + 'Remove'}`);
 
@@ -70,11 +56,6 @@ function saveAdd() {
     }
 
 
-}
-
-function createEntity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without) {
-    var newEntity = new entity(name, pk, attributes, attribute_types, subtypes, cannot_exist_without);
-    entity_data.set(name, newEntity);
 }
 
 let save_button = document.getElementsByClassName('save');
