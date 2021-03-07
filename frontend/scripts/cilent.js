@@ -136,3 +136,26 @@ function passRelationships(where_from, where_to, relationship_type, type_from, t
         console.log(response)
     });
 }
+
+function addRow (name, obj) {
+    let data = {}
+    data["name"] = name;
+    for (let i=0; i<obj.length ; i++) {
+        for (const [key, value] of Object.entries(obj[i])) {
+            data[key] = value;
+        }
+    }
+    console.log(data);
+
+    const options3 = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    fetch('/createRow', options3).then(response => {
+        console.log(response)
+    });
+}

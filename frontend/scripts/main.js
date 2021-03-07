@@ -148,7 +148,10 @@ function saveAdd() {
                         `
                         <tr>
                             <td>${name}</td>
-                            <td style="display: flex; justify-content: flex-end;">
+                            <td style="display: flex; justify-content: flex-end; height: 54px">
+                                <button id=${name + "add"} type="button" class="btn btn-outline-secondary relationshipButton" data-bs-toggle="modal" data-bs-target="#addRow">
+                                    <img src="assets/plus.svg">
+                                </button>
                                 <button type="button" class="btn btn-outline-secondary" id = ${name + 'Info'} data-bs-toggle="modal" data-bs-target="#entityInfoModal">
                                     <img src="assets/info-circle.svg">
                                 </button>
@@ -157,10 +160,57 @@ function saveAdd() {
                                 </button>
                             </td>
                         </tr>`;
+
+                        
     let table_ref = document.getElementById('entTable');
     let new_row = table_ref.insertRow(table_ref.rows.length);
     new_row.innerHTML = my_html_content;
+                        
+    document.getElementById(name + "add").addEventListener("click", function () {
+        let att = entity_data.get(name).attributes;
+        let att_types = entity_data.get(name).attribute_types;
+        
+        let split_attribute = att.split(", ");
+        let split_types = att_types.split(", ");
+        console.log(split_attribute, split_types);
 
+        document.getElementById("addRowBody").innerHTML = "";
+
+        for (let i=0; i<split_attribute.length; i++) {
+            let temp = document.createElement("div");
+            temp.className = "mb-3";
+            temp.innerHTML = `
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">${split_attribute[i]}:</label>
+                    <input type="text" class="form-control" id=${split_attribute[i] + "input"} placeholder=${split_types[i]}>
+                </div>
+            `
+            document.getElementById("addRowBody").append(temp);
+        }
+
+        //<button type="button" class="btn btn-primary">Save changes</button>
+        let confirm = document.createElement("button");
+        confirm.className = "btn btn-primary";
+        confirm.innerHTML = "Save Changes";
+
+        document.getElementById("rowFooter").innerHTML = `
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        `
+        document.getElementById("rowFooter").append(confirm);
+
+        let list = [];
+        confirm.addEventListener("click", function () {
+            for (let i=0; i<split_attribute.length; i++) {
+                let value = document.getElementById(split_attribute[i] + "input").value;
+                let att = split_attribute[i];
+                let obj = {}
+                obj[att] = value;
+                list.push(obj);
+            }
+            console.log(list);
+            addRow(name, list);
+        });
+    });
     // button to delete entities from global data structure and visual table
     const trash = document.getElementById(`${name + 'Remove'}`);
     trash.onclick = () => {

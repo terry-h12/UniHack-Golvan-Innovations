@@ -51,4 +51,23 @@ app.post('/alterTable', (req, res) => {
     });
 });
 
+app.post('/createRow', (req, res) => {
+    let data = {}
+    let entity = "";
+    for (const [key, value] of Object.entries(req.body)) {
+        if (key == "name") {
+            entity = key;
+            continue
+        }
+        data[key] = value;
+    }
+    console.log(entity, data);
+
+    const db = require("./modules/insert_table");
+    db,createRow(entity, data);
+    res.json({
+        status: "success"
+    });
+});
+
 app.listen(8080);
