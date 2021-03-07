@@ -298,8 +298,13 @@ function relationshipSave() {
 
 document.getElementById("confirm").addEventListener("click", function() {
     createAllTables();
-    createAllRelationships();
+    setTimeout(() => {  createAllRelationships(); }, 2000);
     //diagriam gets added here
+
+    let img = new Image();
+    img.src = "../assets/diagram.png";
+    console.log(img);
+    document.getElementById("graph").append(img);
 });
 
 
