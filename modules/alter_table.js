@@ -64,7 +64,7 @@ function my_alter_table (table_from, table_to, relo_type, att_from_type, att_to_
     }
     
     if (att_to_type == "integer") {
-    	var from_type = att_to_type;
+    	var to_type = att_to_type;
     }
     
     if (att_from_type == "varchar5") {
