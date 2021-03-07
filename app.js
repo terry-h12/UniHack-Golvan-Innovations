@@ -56,7 +56,7 @@ app.post('/createRow', (req, res) => {
     let entity = "";
     for (const [key, value] of Object.entries(req.body)) {
         if (key == "name") {
-            entity = key;
+            entity = value;
             continue
         }
         data[key] = value;
@@ -64,7 +64,7 @@ app.post('/createRow', (req, res) => {
     console.log(entity, data);
 
     const db = require("./modules/insert_table");
-    db,createRow(entity, data);
+    db.createRow(entity, data);
     res.json({
         status: "success"
     });
